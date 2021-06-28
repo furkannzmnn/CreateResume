@@ -5,7 +5,6 @@ import java.time.LocalDate
 
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
-import javax.validation.constraints.NotNull
 
 
 @Entity
@@ -19,12 +18,12 @@ data class Education(
 
 
     @Column(name = "school_name")
-    @field:NotNull(message = "okul bilgisi Girilmeli")
-    val schoolName: String? = "Okul Adı",
+    @field:NotBlank()
+    val schoolName: String? = "",
 
 
     @Column(name = "first_year")
-    @field:NotNull(message = "Yıl Bilgisi Girilmeli ")
+    @field:NotBlank()
     val firstYear : LocalDate? = null,
 
     @Column(name = "end_year")
