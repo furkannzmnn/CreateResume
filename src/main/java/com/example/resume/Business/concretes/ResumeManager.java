@@ -2,6 +2,7 @@ package com.example.resume.Business.concretes;
 
 import com.example.resume.Business.abstracts.ResumeService;
 import com.example.resume.DataAcces.ResumeDao;
+import com.example.resume.Entity.Dto.ResumeDto;
 import com.example.resume.Entity.concretes.Resume;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,8 @@ public class ResumeManager implements ResumeService {
     }
 
     @Override
-    public List<Resume> getall( ) {
-        return resumeDao.findAll();
+    public List<ResumeDto> getall( ) {
+        return resumeDao.getResumeDto();
     }
 
 

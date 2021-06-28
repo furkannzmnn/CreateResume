@@ -1,8 +1,11 @@
 package com.example.resume.Entity.concretes
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import java.time.LocalDate
 
 import javax.persistence.*
+import javax.validation.constraints.NotBlank
+import javax.validation.constraints.NotNull
 
 
 @Entity
@@ -14,14 +17,18 @@ data class Education(
     @Column(name = "id")
     val id : Int? = 0,
 
+
     @Column(name = "school_name")
+    @field:NotNull(message = "okul bilgisi Girilmeli")
     val schoolName: String? = "Okul Adı",
 
+
     @Column(name = "first_year")
-    val firstYear : String? = "yyyy-mm-dd",
+    @field:NotNull(message = "Yıl Bilgisi Girilmeli ")
+    val firstYear : LocalDate? = null,
 
     @Column(name = "end_year")
-    val endYear : String? = "yyyy-mm-dd",
+    val endYear : LocalDate? =null,
 
     @OneToMany(mappedBy = "education")
     @JsonIgnore()

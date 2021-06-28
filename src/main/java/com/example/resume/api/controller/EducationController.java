@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,10 +20,9 @@ public class EducationController {
     }
 
 
-    @PostMapping("educationadd")
-    public ResponseEntity add(@RequestBody Education education){
-         this.educationService.add(education);
-         return ResponseEntity.ok(HttpStatus.OK);
+    @PostMapping(value = "educationadd")
+    public ResponseEntity<?> add(@Valid @RequestBody Education education){
+        return ResponseEntity.ok(this.educationService.add(education));
     }
 
     @GetMapping("educationGetall")

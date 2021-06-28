@@ -19,11 +19,11 @@ data class Resume(
 
     @ManyToOne()
     @JoinColumn(name = "education_id")
-    val education: Education? = null
+    val education: Education? = null,
 
 
 
+) {
 
-
-
-)
+    constructor() : this(id = 0)
+}

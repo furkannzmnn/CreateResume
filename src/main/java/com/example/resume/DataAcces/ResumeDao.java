@@ -9,7 +9,9 @@ import java.util.List;
 public interface ResumeDao extends JpaRepository<Resume, Integer> {
 
     // Resume Dto Convert
-    @Query("select  new com.example.resume.Entity.Dto (a.experienceName ,  e.schoolName ,e.firstYear , e.endYear , a.experienceDescription) " +
+    @Query("select  new com.example.resume.Entity.Dto.ResumeDto (a.experienceName,e.schoolName,e.firstYear,e.endYear,a.experienceDescription) " +
             "from Resume j inner join j.education e inner join j.experience a")
     List<ResumeDto> getResumeDto();
+
+
 }

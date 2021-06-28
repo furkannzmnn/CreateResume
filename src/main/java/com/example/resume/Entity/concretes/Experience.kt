@@ -1,8 +1,9 @@
 package com.example.resume.Entity.concretes
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import javax.persistence.*
 
+import net.bytebuddy.asm.Advice
+import javax.persistence.*
 
 
 @Table(name="experience")
@@ -26,14 +27,9 @@ import javax.persistence.*
     val resume: List<Resume>? = null
 
 
-
-
-
-
-
-
-)
-
+){
+    constructor():this(id=0)
+ }
 
 
 
