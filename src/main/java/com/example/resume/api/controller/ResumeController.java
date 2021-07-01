@@ -6,8 +6,6 @@ import com.example.resume.Entity.concretes.Resume;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,8 +25,8 @@ public class ResumeController {
     }
 
     @GetMapping("getresume")
-    public List<ResumeDto> getall( ){
-        return  this.resumeService.getall();
+    public ResponseEntity<List<ResumeDto>> getall(){
+        return ResponseEntity.ok(this.resumeService.getall());
     }
 
 }
