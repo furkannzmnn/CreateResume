@@ -5,12 +5,18 @@ import com.example.resume.Entity.Dto.ResumeDto;
 import com.example.resume.Entity.concretes.Resume;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
 public class ResumeDtoConverter {
     public ResumeDto convertToResume(Resume from){
         return new ResumeDto(
-             from.getId(),
-             from.getExperience(),
-             from.getEducation() );
+                Objects.requireNonNull(from.getId()),
+                from.getExperience().getExperienceName(),
+                from.getEducation().getSchoolName(),
+                from.getEducation().getFirstYear(),
+                from.getEducation().getEndYear(),
+                from.getExperience().getExperienceDescription()
+                );
     }
 }

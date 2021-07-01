@@ -9,8 +9,11 @@ import java.time.LocalDate
 data class ResumeDto(
 
     val id: Int?,
-    val experience: Experience?,
-    val education: Education?
+    val experienceName : String?,
+    val schoolName: String?,
+    val firstYear: LocalDate?,
+    val endYear: LocalDate?,
+    val experienceDescription: String?
 
 )
 
