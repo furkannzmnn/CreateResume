@@ -7,6 +7,7 @@ import javax.persistence.*
 @Table(name="resume")
 data class Resume(
 
+    // TODO: 01.07.2021 SCHOOL DEPARTMENT , SKİLSS EKLENECEK VE DTO OLUŞTURULACAK
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,7 +22,9 @@ data class Resume(
     @JoinColumn(name = "education_id")
     val education: Education? = null,
 
-
+    @ManyToOne
+    @JoinColumn(name = "skill_id")
+    val skill: Skill?=null
 
 ) {
 

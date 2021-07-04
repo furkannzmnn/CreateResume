@@ -1,7 +1,7 @@
 package com.example.resume.api.controller;
 
-import com.example.resume.Business.abstracts.ResumeService;
-import com.example.resume.Entity.Dto.ResumeDto;
+import com.example.resume.Business.concretes.ResumeService;
+import com.example.resume.Dto.ResumeDto;
 import com.example.resume.Entity.concretes.Resume;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +19,8 @@ public class ResumeController {
     }
 
     @PostMapping("addresume")
-    public ResponseEntity add( @RequestBody Resume resume){
-        this.resumeService.add(resume);
+    public ResponseEntity<?> createResume( @RequestBody Resume resume){
+        this.resumeService.createResume(resume);
                 return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -28,5 +28,16 @@ public class ResumeController {
     public ResponseEntity<List<ResumeDto>> getall(){
         return ResponseEntity.ok(this.resumeService.getall());
     }
+
+    @PostMapping("findId")
+    public ResponseEntity<?> ResumefindById( @RequestParam int id){
+        return ResponseEntity.ok(this.resumeService.findById(id));
+    }
+
+    @DeleteMapping("deleteId/{id}")
+    public void deleteById(@PathVariable int id){
+         this.resumeService.deleteById(id);
+    }
+
 
 }

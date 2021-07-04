@@ -3,6 +3,7 @@ package com.example.resume.Entity.concretes
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 import net.bytebuddy.asm.Advice
+import java.time.LocalDateTime
 import javax.persistence.*
 
 
@@ -18,9 +19,11 @@ import javax.persistence.*
     @Column(name="experience_name")
     val experienceName: String? = "String",
 
-
     @Column(name = "experience_description")
     val experienceDescription: String? = "String",
+
+    @Column(name = "created_at")
+    val createdAt: LocalDateTime?= LocalDateTime.now(),
 
     @OneToMany(mappedBy = "experience")
     @JsonIgnore()

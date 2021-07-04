@@ -18,6 +18,7 @@ data class Education(
     val id : Int? = 0,
 
 
+
     @Column(name = "school_name")
     @field:NotBlank(message = "okul bilgisi boş olamaz")
     val schoolName: String? = "",

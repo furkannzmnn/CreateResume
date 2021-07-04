@@ -1,4 +1,4 @@
-package com.example.resume.Entity.Dto
+package com.example.resume.Dto
 
 data class ExperienceDto(
     val id : Int?,

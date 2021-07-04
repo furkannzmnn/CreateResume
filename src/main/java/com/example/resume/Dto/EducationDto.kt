@@ -1,5 +1,4 @@
-package com.example.resume.Entity.Dto
-import com.example.resume.Entity.concretes.Resume
+package com.example.resume.Dto
 import java.time.LocalDate
 
 
