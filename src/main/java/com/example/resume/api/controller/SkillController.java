@@ -1,8 +1,8 @@
 package com.example.resume.api.controller;
 
-import com.example.resume.Business.concretes.SkillService;
+import com.example.resume.Business.SkillService;
 import com.example.resume.Dto.SkillDto;
-import com.example.resume.Entity.concretes.Skill;
+import com.example.resume.Entity.Skill;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

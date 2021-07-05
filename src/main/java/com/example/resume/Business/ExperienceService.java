@@ -1,9 +1,9 @@
-package com.example.resume.Business.concretes;
+package com.example.resume.Business;
 
 import com.example.resume.DataAcces.ExperienceDao;
 import com.example.resume.Dto.ExperienceDto;
 import com.example.resume.Dto.converter.ExperienceDtoConverter;
-import com.example.resume.Entity.concretes.Experience;
+import com.example.resume.Entity.Experience;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

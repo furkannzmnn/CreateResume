@@ -1,9 +1,9 @@
-package com.example.resume.Business.concretes;
+package com.example.resume.Business;
 
 import com.example.resume.DataAcces.SkillDao;
 import com.example.resume.Dto.SkillDto;
 import com.example.resume.Dto.converter.SkillDtoConverter;
-import com.example.resume.Entity.concretes.Skill;
+import com.example.resume.Entity.Skill;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,9 +1,9 @@
-package com.example.resume.Business.concretes;
+package com.example.resume.Business;
 
 import com.example.resume.DataAcces.EducationDao;
 import com.example.resume.Dto.EducationDto;
 import com.example.resume.Dto.converter.EducationDtoConverter;
-import com.example.resume.Entity.concretes.Education;
+import com.example.resume.Entity.Education;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

@@ -1,7 +1,7 @@
 package com.example.resume.Dto.converter;
 
 import com.example.resume.Dto.ResumeDto;
-import com.example.resume.Entity.concretes.Resume;
+import com.example.resume.Entity.Resume;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;

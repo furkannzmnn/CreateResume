@@ -1,9 +1,9 @@
 package com.example.resume.api.controller;
 
 
-import com.example.resume.Business.concretes.EducationService;
+import com.example.resume.Business.EducationService;
 import com.example.resume.Dto.EducationDto;
-import com.example.resume.Entity.concretes.Education;
+import com.example.resume.Entity.Education;
 
 import org.springframework.http.ResponseEntity;
 

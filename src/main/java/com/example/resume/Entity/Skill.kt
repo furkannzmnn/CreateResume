@@ -1,4 +1,4 @@
-package com.example.resume.Entity.concretes
+package com.example.resume.Entity
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import java.time.LocalDateTime

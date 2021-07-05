@@ -1,8 +1,8 @@
 package com.example.resume.api.controller;
 
-import com.example.resume.Business.concretes.ResumeService;
+import com.example.resume.Business.ResumeService;
 import com.example.resume.Dto.ResumeDto;
-import com.example.resume.Entity.concretes.Resume;
+import com.example.resume.Entity.Resume;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,10 +34,12 @@ public class ResumeController {
         return ResponseEntity.ok(this.resumeService.findById(id));
     }
 
-    @DeleteMapping("deleteId/{id}")
+    @DeleteMapping("delete/{id}")
     public void deleteById(@PathVariable int id){
-         this.resumeService.deleteById(id);
+        this.resumeService.deleteById(id);
     }
+
+
 
 
 }

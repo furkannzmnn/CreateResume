@@ -1,7 +1,7 @@
 package com.example.resume.Dto.converter;
 
 import com.example.resume.Dto.ExperienceDto;
-import com.example.resume.Entity.concretes.Experience;
+import com.example.resume.Entity.Experience;
 import org.springframework.stereotype.Component;
 
 @Component
