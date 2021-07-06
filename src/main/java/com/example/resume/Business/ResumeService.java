@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 @Service
 public class ResumeService {
 
-    private final static  String RESUME_NOT_FOUND_MSG =
-            "Resume with id %s not found";
+    private final static String RESUME_NOT_FOUND_MSG =
+            "Resume with id not found";
     private final ResumeDao resumeDao;
     private final ResumeDtoConverter dtoConverter;
 
@@ -31,10 +31,10 @@ public class ResumeService {
     }
 
 
-    public List<ResumeDto> getall( ) {
+    public List<ResumeDto> getall() {
         return resumeDao.findAll()
                 .stream()
-                .map(dtoConverter :: convertToResume)
+                .map(dtoConverter::convertToResume)
                 .collect(Collectors.toList());
     }
 
@@ -44,13 +44,14 @@ public class ResumeService {
                         () -> new ResumeNotFoundException(String.format(RESUME_NOT_FOUND_MSG + id)));
     }
 
-    public void deleteById(int id){
-        try {
-            resumeDao.deleteById(id);
-        } catch (ResumeNotFoundException e) {
-            String.format(RESUME_NOT_FOUND_MSG + id);
-        }
+    public void deleteById(int id) {
 
+        if (resumeDao.existsById(id)) {
+            resumeDao.deleteById(id);
+
+        } else {
+            throw new ResumeNotFoundException(String.format(RESUME_NOT_FOUND_MSG, id));
+        }
     }
 
 
