@@ -7,7 +7,6 @@ import javax.persistence.*
 @Table(name="resume")
 data class Resume(
 
-    // TODO: 01.07.2021 SCHOOL DEPARTMENT , SKİLSS EKLENECEK VE DTO OLUŞTURULACAK
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

@@ -2,6 +2,7 @@ package com.example.resume.Business;
 
 import com.example.resume.DataAcces.EducationDao;
 import com.example.resume.Dto.EducationDto;
+import com.example.resume.Dto.Requests.EducationRequest;
 import com.example.resume.Dto.converter.EducationDtoConverter;
 import com.example.resume.Entity.Education;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,16 @@ public class EducationService {
     }
 
 
-    public boolean Add(Education education) {
-       if (!checkYear(education)){
+    public boolean Add(EducationRequest educationRequest) {
+       if (!checkYear(educationRequest)){
             return false;
        }else {
-           this.educationDao.save(education);
+           Education education = new Education();
+           education.copy(educationRequest.getId(),
+                   educationRequest.getSchoolName(),
+                   educationRequest.getFirstYear(),
+                   educationRequest.getEndYear());
+           educationDao.save(education);
            return true;
 
        }
@@ -41,7 +47,7 @@ public class EducationService {
     }
 
 
-    public boolean checkYear(Education education) {
+    public boolean checkYear(EducationRequest education) {
         if (education.getEndYear().isAfter(LocalDate.now())){
             return false;
         }

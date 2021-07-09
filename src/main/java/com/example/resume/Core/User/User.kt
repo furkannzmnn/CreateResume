@@ -2,8 +2,6 @@ package com.example.resume.Core.User
 
 
 import org.hibernate.annotations.GenericGenerator
-
-
 import javax.persistence.*
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
@@ -31,7 +29,7 @@ data class User (
 
     @Column(name = "password")
     @field:NotBlank
-    private val password: String?="" ,
+    val password: String?="" ,
 
     @Column(name = "enabled")
     val enabled: Boolean?= true

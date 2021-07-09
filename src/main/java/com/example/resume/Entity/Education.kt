@@ -18,14 +18,10 @@ data class Education(
     val id : Int? = 0,
 
 
-
     @Column(name = "school_name")
-    @field:NotBlank(message = "okul bilgisi boş olamaz")
     val schoolName: String? = "",
 
-
     @Column(name = "first_year")
-    @field:NotNull(message = "tarih boş geçilemez")
     val firstYear : LocalDate? = null,
 
     @Column(name = "end_year")
@@ -34,9 +30,12 @@ data class Education(
     @OneToMany(mappedBy = "education")
     @JsonIgnore()
     val resume: List<Resume>? = null
-
-
 ) {
+
+    fun copy(id:Int? = this.id,
+            schoolName: String?=this.schoolName,
+            firstYear: LocalDate?=this.firstYear,
+            endYear: LocalDate?=this.endYear)=Education(id,schoolName, firstYear, endYear)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
