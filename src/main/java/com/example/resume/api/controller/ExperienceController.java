@@ -3,6 +3,7 @@ package com.example.resume.api.controller;
 
 import com.example.resume.Business.ExperienceService;
 import com.example.resume.Dto.ExperienceDto;
+import com.example.resume.Dto.Requests.ExperienceRequest;
 import com.example.resume.Entity.Experience;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class ExperienceController {
     }
 
     @PostMapping("addexperience")
-    public Experience add( @RequestBody Experience experience){
-        return this.experienceService.add(experience);
+    public ExperienceDto add( @RequestBody ExperienceRequest request){
+        return this.experienceService.add(request);
     }
 }

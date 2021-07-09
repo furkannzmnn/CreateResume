@@ -5,6 +5,8 @@ import com.example.resume.Dto.EducationDto;
 import com.example.resume.Dto.Requests.EducationRequest;
 import com.example.resume.Dto.converter.EducationDtoConverter;
 import com.example.resume.Entity.Education;
+import com.example.resume.Exception.CustomException.EducationInvalidException;
+import com.example.resume.Exception.CustomException.ExperienceInvalidException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -14,6 +16,8 @@ import java.util.stream.Collectors;
 @Service
 public class EducationService {
 
+    public static final String DATE_İNVALİD_MSG =
+            "Okul bitis tarihi şimdiden geç olamaz! ";
     private final EducationDao educationDao;
     private final EducationDtoConverter dtoConverter;
 
@@ -23,17 +27,20 @@ public class EducationService {
     }
 
 
-    public boolean Add(EducationRequest educationRequest) {
+    public EducationDto Add(EducationRequest educationRequest) {
        if (!checkYear(educationRequest)){
-            return false;
+
+           throw new EducationInvalidException(DATE_İNVALİD_MSG +  educationRequest.getEndYear());
+
        }else {
            Education education = new Education();
-           education.copy(educationRequest.getId(),
-                   educationRequest.getSchoolName(),
-                   educationRequest.getFirstYear(),
-                   educationRequest.getEndYear());
+           education.setId(educationRequest.getId());
+           education.setSchoolName(educationRequest.getSchoolName());
+           education.setFirstYear(educationRequest.getFirstYear());
+           education.setEndYear(educationRequest.getEndYear());
            educationDao.save(education);
-           return true;
+           return dtoConverter.convertToEducation(education);
+
 
        }
     }

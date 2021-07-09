@@ -26,13 +26,17 @@ import javax.persistence.*
     val createdAt: LocalDateTime?= LocalDateTime.now(),
 
     @OneToMany(mappedBy = "experience")
-    @JsonIgnore()
     val resume: List<Resume>? = null
 
 
 ){
     constructor():this(id=0)
- }
+
+    fun copy(id:Int? = this.id,
+             experienceName: String? = this.experienceName,
+             experienceDescription: String? = this.experienceDescription
+    )= Experience(id,experienceName,experienceDescription);
+}
 
 
 

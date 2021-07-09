@@ -1,5 +1,7 @@
 package com.example.resume.Exception;
 
+import com.example.resume.Exception.CustomException.EducationInvalidException;
+import com.example.resume.Exception.CustomException.ExperienceInvalidException;
 import com.example.resume.Exception.CustomException.ResumeNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +15,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
-public class GlobalExceptionHandler{
+public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<Object> handleValidationException(MethodArgumentNotValidException exception){
-        Map<String ,String> validationErrors = new HashMap<>();
-        for (FieldError fieldError : exception.getBindingResult().getFieldErrors()){
+    public ResponseEntity<Object> handleValidationException(MethodArgumentNotValidException exception) {
+        Map<String, String> validationErrors = new HashMap<>();
+        for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
             validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
         }
 
@@ -26,11 +28,20 @@ public class GlobalExceptionHandler{
     }
 
     @ExceptionHandler(ResumeNotFoundException.class)
-    public ResponseEntity<?> resumeCustomExceptionHandler(ResumeNotFoundException e){
-        return new ResponseEntity<>(e.getMessage() , HttpStatus.NOT_FOUND);
-
+    public ResponseEntity<?> resumeCustomExceptionHandler(ResumeNotFoundException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(ExperienceInvalidException.class)
+    public ResponseEntity<?> ExperienceInvalidExceptionHandler(ExperienceInvalidException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EducationInvalidException.class)
+    public ResponseEntity<?> EducationInvalidExceptionHandler(EducationInvalidException e) {
+
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 
 
 }

@@ -15,21 +15,21 @@ data class Education(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name = "id")
-    val id : Int? = 0,
+    var id : Int? = 0,
 
 
     @Column(name = "school_name")
-    val schoolName: String? = "",
+    var schoolName: String? = "",
 
     @Column(name = "first_year")
-    val firstYear : LocalDate? = null,
+    var firstYear : LocalDate? = null,
 
     @Column(name = "end_year")
-    val endYear : LocalDate? =null,
+    var endYear : LocalDate? =null,
 
     @OneToMany(mappedBy = "education")
-    @JsonIgnore()
-    val resume: List<Resume>? = null
+
+    var resume: List<Resume>? = null
 ) {
 
     fun copy(id:Int? = this.id,

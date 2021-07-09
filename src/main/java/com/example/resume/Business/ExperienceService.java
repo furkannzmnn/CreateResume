@@ -2,6 +2,7 @@ package com.example.resume.Business;
 
 import com.example.resume.DataAcces.ExperienceDao;
 import com.example.resume.Dto.ExperienceDto;
+import com.example.resume.Dto.Requests.ExperienceRequest;
 import com.example.resume.Dto.converter.ExperienceDtoConverter;
 import com.example.resume.Entity.Experience;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,12 @@ public class ExperienceService {
     }
 
 
-    public Experience add(Experience experience) {
-        return experienceDao.save(experience);
+    public ExperienceDto add(ExperienceRequest experienceRequest) {
+         Experience experience = new Experience();
+         experience.copy(experienceRequest.getId(),
+                        experienceRequest.getExperienceName(),
+                 experienceRequest.getExperienceDescription());
+         experienceDao.save(experience);
+         return dtoConverter.convertToExperience(experience);
     }
 }
