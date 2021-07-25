@@ -10,33 +10,23 @@ import javax.persistence.*
 @Table(name="experience")
 @Entity
  data class Experience(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @field:Id
+    @field:GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name="id")
+    @field:Column(name="id")
     val id: Int? = 0,
 
-    @Column(name="experience_name")
-    val experienceName: String? = "String",
+    @field:Column(name="experience_name")
+    val experienceName: String? = "",
 
-    @Column(name = "experience_description")
-    val experienceDescription: String? = "String",
+    @field:Column(name = "experience_description")
+    val experienceDescription: String? = "",
 
-    @Column(name = "created_at")
-    val createdAt: LocalDateTime?= LocalDateTime.now(),
+    @field:Column(name = "created_at")
+    val createdAt: LocalDateTime? = LocalDateTime.now(),
 
     @OneToMany(mappedBy = "experience")
+    @JsonIgnore
     val resume: List<Resume>? = null
 
-
-){
-    constructor():this(id=0)
-
-    fun copy(id:Int? = this.id,
-             experienceName: String? = this.experienceName,
-             experienceDescription: String? = this.experienceDescription
-    )= Experience(id,experienceName,experienceDescription);
-}
-
-
-
+)

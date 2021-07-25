@@ -26,16 +26,13 @@ data class Resume(
     val skill: Skill?=null
 
 ) {
-
-    constructor() : this(id = 0)
-
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
         other as Resume
 
-        if (id != other.id) return false
+        if (id != other.id) return true
         if (experience != other.experience) return false
         if (education != other.education) return false
         if (skill != other.skill) return false
@@ -50,4 +47,6 @@ data class Resume(
         result = 31 * result + (skill?.hashCode() ?: 0)
         return result
     }
+
+
 }

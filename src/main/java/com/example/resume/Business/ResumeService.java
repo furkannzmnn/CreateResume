@@ -1,6 +1,7 @@
 package com.example.resume.Business;
 
 import com.example.resume.DataAcces.ResumeDao;
+import com.example.resume.Dto.Requests.ResumeRequest;
 import com.example.resume.Dto.ResumeDto;
 import com.example.resume.Dto.converter.ResumeDtoConverter;
 import com.example.resume.Entity.Resume;
@@ -25,8 +26,14 @@ public class ResumeService {
     }
 
 
-    public Resume createResume(Resume resume) {
-        return resumeDao.save(resume);
+    public ResumeDto createResume(ResumeRequest resumeRequest) {
+       Resume resume = new Resume(
+               resumeRequest.getId(),
+               resumeRequest.getExperience(),
+               resumeRequest.getEducation(),
+               resumeRequest.getSkill()
+       );
+       return dtoConverter.convertToResume(resumeDao.save(resume));
 
     }
 
@@ -38,17 +45,16 @@ public class ResumeService {
                 .collect(Collectors.toList());
     }
 
-    public Resume findById(int id) {
+    private Resume findById(int id) {
         return resumeDao.findById(id)
                 .orElseThrow(
                         () -> new ResumeNotFoundException(String.format(RESUME_NOT_FOUND_MSG + id)));
     }
 
-    public void deleteById(int id) {
+    protected void deleteById(int id) {
 
         if (resumeDao.existsById(id)) {
             resumeDao.deleteById(id);
-
         } else {
             throw new ResumeNotFoundException(String.format(RESUME_NOT_FOUND_MSG, id));
         }

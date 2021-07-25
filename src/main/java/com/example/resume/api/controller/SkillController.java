@@ -1,6 +1,7 @@
 package com.example.resume.api.controller;
 
 import com.example.resume.Business.SkillService;
+import com.example.resume.Dto.Requests.SkillRequest;
 import com.example.resume.Dto.SkillDto;
 import com.example.resume.Entity.Skill;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class SkillController {
     }
 
     @PostMapping("skiladd")
-    public ResponseEntity<?> add(@RequestBody Skill skill) {
-        return ResponseEntity.ok(this.skillService.add(skill));
+    public ResponseEntity<SkillDto> add(@RequestBody SkillRequest skillRequest) {
+        return ResponseEntity.ok(this.skillService.add(skillRequest));
     }
 }

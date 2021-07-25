@@ -1,6 +1,7 @@
 package com.example.resume.Business;
 
 import com.example.resume.DataAcces.SkillDao;
+import com.example.resume.Dto.Requests.SkillRequest;
 import com.example.resume.Dto.SkillDto;
 import com.example.resume.Dto.converter.SkillDtoConverter;
 import com.example.resume.Entity.Skill;
@@ -29,7 +30,14 @@ public class SkillService {
     }
 
 
-    public Skill add(Skill skill) {
-        return this.skillDao.save(skill);
+    public SkillDto add(SkillRequest skillRequest) {
+        Skill skill = new Skill(
+                skillRequest.getId(),
+                skillRequest.getSkillName(),
+                skillRequest.getSkillName(),
+                skillRequest.getCreatedAt(),
+                skillRequest.getResume()
+        );
+        return skillDtoConverter.convertToSkillDto(skillDao.save(skill));
     }
 }

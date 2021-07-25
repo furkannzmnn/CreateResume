@@ -5,6 +5,7 @@ import com.example.resume.Dto.ExperienceDto;
 import com.example.resume.Dto.Requests.ExperienceRequest;
 import com.example.resume.Dto.converter.ExperienceDtoConverter;
 import com.example.resume.Entity.Experience;
+import com.example.resume.Entity.Resume;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class ExperienceService {
 
     private final ExperienceDao experienceDao;
     private final ExperienceDtoConverter dtoConverter;
+
 
     public ExperienceService(ExperienceDao experienceDao, ExperienceDtoConverter dtoConverter) {
         this.experienceDao = experienceDao;
@@ -31,11 +33,13 @@ public class ExperienceService {
 
 
     public ExperienceDto add(ExperienceRequest experienceRequest) {
-         Experience experience = new Experience();
-         experience.copy(experienceRequest.getId(),
-                        experienceRequest.getExperienceName(),
-                 experienceRequest.getExperienceDescription());
-         experienceDao.save(experience);
-         return dtoConverter.convertToExperience(experience);
+         Experience experience = new Experience(
+                 experienceRequest.getId(),
+                 experienceRequest.getExperienceName(),
+                 experienceRequest.getExperienceDescription(),
+                 experienceRequest.getCreatedAt(),
+                 experienceRequest.getResume()
+         );
+         return dtoConverter.convertToExperience(experienceDao.save(experience));
     }
 }

@@ -11,7 +11,8 @@ public class UserDtoConverter {
                 from.getId(),
                 from.getFirstName(),
                 from.getLastName(),
-                from.getEmail()
+                from.getEmail(),
+               from.getPassword()
         );
     }
 }

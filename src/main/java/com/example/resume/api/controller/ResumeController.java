@@ -1,6 +1,7 @@
 package com.example.resume.api.controller;
 
 import com.example.resume.Business.ResumeService;
+import com.example.resume.Dto.Requests.ResumeRequest;
 import com.example.resume.Dto.ResumeDto;
 import com.example.resume.Entity.Resume;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/resume/")
+@CrossOrigin
 public class ResumeController {
 
     private final ResumeService resumeService;
@@ -19,25 +21,18 @@ public class ResumeController {
     }
 
     @PostMapping("addresume")
-    public ResponseEntity<?> createResume( @RequestBody Resume resume){
-        this.resumeService.createResume(resume);
-                return ResponseEntity.ok(HttpStatus.OK);
+    public ResponseEntity<ResumeDto> createResume( @RequestBody ResumeRequest resumeRequest){
+        return ResponseEntity.ok(
+                this.resumeService.createResume(resumeRequest));
     }
 
-    @GetMapping("getresume")
+    @GetMapping("getresume" )
     public ResponseEntity<List<ResumeDto>> getall(){
         return ResponseEntity.ok(this.resumeService.getall());
     }
 
-    @PostMapping("findId")
-    public ResponseEntity<?> ResumefindById( @RequestParam int id){
-        return ResponseEntity.ok(this.resumeService.findById(id));
-    }
 
-    @DeleteMapping("delete/{id}")
-    public void deleteById(@PathVariable int id){
-        this.resumeService.deleteById(id);
-    }
+
 
 
 
